@@ -1,7 +1,6 @@
 package agh.ics.oop.gui;
 
 import agh.ics.oop.*;
-import agh.ics.oop.IWorldMap;
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.scene.control.Label;
@@ -11,7 +10,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,10 +21,10 @@ public class App extends Application {
         List<String> args = new ArrayList<>(List.of("f", "b", "r", "l", "f", "f", "r", "r", "f", "f", "f", "f", "f", "f", "f", "f"));
 
 
-        var directions = OptionsParser.parse(args.toArray(new String[0]));
-        var map = new GrassField(20);
+        List<MoveDirection> directions = OptionsParser.parse(args.toArray(new String[0]));
+        this.map = new GrassField(20);
         List<Vector2d> positions = new ArrayList<>(List.of(new Vector2d(2,2), new Vector2d(2, 4)));
-        IEngine engine = new SimulationEngine(directions, map, positions);
+        IEngine engine = new SimulationEngine(directions, this.map, positions);
         engine.run();
     }
 
@@ -74,14 +72,13 @@ public class App extends Application {
                 grid.add(label, j, i, 1, 1);
             }
         }
-
         return grid;
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         GridPane grid = createGrid();
-        Scene scene = new Scene(grid, 400, 400);
+        Scene scene = new Scene(grid, 700, 700);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

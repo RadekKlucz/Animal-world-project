@@ -14,9 +14,4 @@ public class RectangularMap extends AbstractWorldMap implements IWorldMap {
     public boolean canMoveTo(Vector2d position) {
         return position.follows(lowerLeftCorner) && position.precedes(upperRightCorner) && super.canMoveTo(position);
     }
-
-    @Override
-    public Vector2d[] getCorners() {
-        return new Vector2d[0];
-    }
 }

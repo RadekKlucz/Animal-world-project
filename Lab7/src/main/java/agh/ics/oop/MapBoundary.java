@@ -1,7 +1,6 @@
 package agh.ics.oop;
 
 import java.util.TreeMap;
-import java.util.Vector;
 
 public class MapBoundary implements IPositionChangeObserver {
     private final TreeMap<Vector2d, IMapElement> mapElementX = new TreeMap<Vector2d, IMapElement>(new MapBoundaryComparison("x"));

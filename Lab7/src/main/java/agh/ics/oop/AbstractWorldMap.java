@@ -3,17 +3,10 @@ package agh.ics.oop;
 import java.util.LinkedHashMap;
 public abstract class AbstractWorldMap implements IWorldMap {
 
-    protected final MapVisualizer mapVisualiser;
-    protected final LinkedHashMap<Vector2d, IMapElement> mapElementsList;
-    protected Vector2d lowerLeftCorner;
-    protected Vector2d upperRightCorner;
-
-    public AbstractWorldMap() {
-        this.mapVisualiser = new MapVisualizer(this);
-        this.mapElementsList = new LinkedHashMap<>();
-        this.lowerLeftCorner = new Vector2d(Integer.MAX_VALUE, Integer.MAX_VALUE);
-        this.upperRightCorner = new Vector2d(Integer.MIN_VALUE, Integer.MIN_VALUE);
-    }
+    protected final MapVisualizer mapVisualiser = new MapVisualizer(this);
+    protected final LinkedHashMap<Vector2d, IMapElement> mapElementsList = new LinkedHashMap<>();
+    protected Vector2d lowerLeftCorner = new Vector2d(Integer.MAX_VALUE, Integer.MAX_VALUE);
+    protected Vector2d upperRightCorner = new Vector2d(Integer.MIN_VALUE, Integer.MIN_VALUE);
 
     @Override
     public boolean canMoveTo(Vector2d position) {
@@ -25,9 +18,8 @@ public abstract class AbstractWorldMap implements IWorldMap {
         if (canMoveTo(animal.getPosition())) {
             this.mapElementsList.put(animal.getPosition(), animal);
             return true;
-        } else {
-            throw new IllegalArgumentException("Cannot place animal on position: " + animal.getPosition());
         }
+        throw new IllegalArgumentException("Cannot place animal on position: " + animal.getPosition());
     }
 
     @Override
@@ -36,7 +28,7 @@ public abstract class AbstractWorldMap implements IWorldMap {
     }
 
     @Override
-    public Object objectAt(Vector2d position) {
+    public IMapElement objectAt(Vector2d position) {
         return mapElementsList.get(position);
     }
 

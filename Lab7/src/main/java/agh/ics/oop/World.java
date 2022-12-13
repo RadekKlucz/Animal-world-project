@@ -3,9 +3,6 @@ package agh.ics.oop;
 import agh.ics.oop.gui.App;
 import javafx.application.Application;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static java.lang.System.out;
 
 public class World {
@@ -59,10 +56,11 @@ public class World {
 
     public static void main(String[] args) {
         try {
+            out.println("Start");
             Application.launch(App.class, String.valueOf(args));
+            out.println("Stop");
         } catch (IllegalArgumentException error) {
             System.out.println(error.getMessage());
         }
-
     }
 }

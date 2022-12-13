@@ -34,10 +34,10 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
 
     @Override
     public boolean canMoveTo(Vector2d position) {
-        Object object = objectAt(position);
-        if (object instanceof Grass) {
-            this.mapBoundary.removeElement((IMapElement) object);
-            mapElementsList.remove(position);
+        IMapElement element = objectAt(position);
+        if (element instanceof Grass) {
+            this.mapBoundary.removeElement(element);
+            this.mapElementsList.remove(position);
             addPositionOfGrass(1);
         }
         return super.canMoveTo(position);
@@ -45,12 +45,8 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
 
     @Override
     public String toString() {
-        for (Map.Entry<Vector2d, IMapElement> element : mapElementsList.entrySet()) {
-            if (element.getValue() instanceof Animal) {
-                this.lowerLeftCorner = this.lowerLeftCorner.lowerLeft(element.getKey());
-                this.upperRightCorner = this.upperRightCorner.upperRight(element.getKey());
-            }
-        }
+        this.lowerLeftCorner = this.mapBoundary.getLowerLeft();
+        this.upperRightCorner = this.mapBoundary.getUpperRight();
         return super.toString();
     }
 
@@ -59,11 +55,6 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
         super.place(animal);
         this.mapBoundary.addElement(animal);
         return true;
-    }
-
-    @Override
-    public Vector2d[] getCorners() {
-        return new Vector2d[0];
     }
 
     @Override
