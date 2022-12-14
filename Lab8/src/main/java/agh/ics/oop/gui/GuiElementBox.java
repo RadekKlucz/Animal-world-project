@@ -15,11 +15,11 @@ import static java.lang.System.out;
 
 public class GuiElementBox {
 
-    private Image imageUp = null;
-    private Image imageDown = null;
-    private Image imageRight = null;
-    private Image imageLeft = null;
-    private Image imageGrass = null;
+    private Image imageUp;
+    private Image imageDown;
+    private Image imageRight;
+    private Image imageLeft;
+    private Image imageGrass;
 
     public GuiElementBox() {
         try {
