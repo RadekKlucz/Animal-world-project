@@ -20,8 +20,8 @@ public class Animal extends AbstractWordMapElement {
         this.addObserver(this.map);
     }
 
-    public MapDirection getDirection() {
-        return this.directionOnMap;
+    public MapDirection getDirectionOnMap() {
+        return directionOnMap;
     }
 
     @Override
@@ -71,5 +71,14 @@ public class Animal extends AbstractWordMapElement {
     private void removeObserver(IPositionChangeObserver observer) {
         this.observerList.remove(observer);
     }
-}
 
+    @Override
+    public String getPath() {
+        return switch (this.directionOnMap) {
+            case SOUTH -> "src/main/resources/down.png";
+            case NORTH -> "src/main/resources/up.png";
+            case WEST -> "src/main/resources/left.png";
+            case EAST -> "src/main/resources/right.png";
+        };
+    }
+}

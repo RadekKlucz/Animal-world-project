@@ -57,7 +57,7 @@ public class World {
     public static void main(String[] args) {
         try {
             out.println("Start");
-            Application.launch(App.class, String.valueOf(args));
+            Application.launch(App.class, args);
             out.println("Stop");
         } catch (IllegalArgumentException error) {
             System.out.println(error.getMessage());

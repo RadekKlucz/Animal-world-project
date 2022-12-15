@@ -17,7 +17,7 @@ public class SimulationEngine implements IEngine {
 
         for (Vector2d position : listOfVectors2d) {
             Animal animal = new Animal(this.map, position);
-            if(this.map.place(animal)) {
+            if (this.map.place(animal)) {
                 animals.add(animal);
             }
         }
@@ -36,7 +36,7 @@ public class SimulationEngine implements IEngine {
         System.out.println(map);
         int animalsSize = animals.size();
         for(int numberOfAnimal = 0; numberOfAnimal < moveDirectionsList.size(); numberOfAnimal++) {
-            animals.get(numberOfAnimal % animalsSize).move(this.moveDirectionsList.get(numberOfAnimal));
+            animals.get(numberOfAnimal % animalsSize).move(moveDirectionsList.get(numberOfAnimal));
             System.out.println(map);
         }
     }
