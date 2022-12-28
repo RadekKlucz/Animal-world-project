@@ -27,3 +27,5 @@ build/
 .gradle/
 .idea/
 
+exercises/
+find-bug.py
