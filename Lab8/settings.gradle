@@ -1,4 +1,0 @@
-rootProject.name = 'oolab2'
-include 'src:main:agh.ics.oop.gui'
-findProject(':src:main:agh.ics.oop.gui')?.name = 'agh.ics.oop.gui'
-
